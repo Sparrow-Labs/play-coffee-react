@@ -1,8 +1,9 @@
 Play Coffee React sbt plugin
 ============================
 
-play-coffee-react is an sbt plugin, which utilizes cjsx (linkt ot cjsx) to compile JSX assets,
-written in CoffeeScript, under the Play framework. 
+play-coffee-react is an sbt plugin, which utilizes cjsx to compile JSX assets,
+written in CoffeeScript, under the Play framework.
+You need the [cjsx](https://github.com/jsdf/coffee-react) compiler to be installed on Your system.
 
 Usage
 =====
@@ -35,7 +36,7 @@ Note that every time You make a change to the plugin, You have to repeat step 3.
    
 ```scala
 lazy val root = project.in( file(".") ).dependsOn(assemblyPlugin)
-lazy val assemblyPlugin = uri("file:////path/to/play-coffee-react")
+lazy val assemblyPlugin = uri("https://github.com/Sparrow-Labs/play-coffee-react.git")
 ```
 
 2. In Your play project directory issue:
