@@ -8,19 +8,13 @@ import scala.sys.process._
 
 object CoffeeReactCompiler {
   def compile(jsxCoffeeFile: File, opts: Seq[String]): (String, Option[String], Seq[File]) = {
-    // Filter out rjs option added by AssetsCompiler until we get clarity on what would
-    // be proper solution
-    // See: https://groups.google.com/d/topic/play-framework/VbhJUfVl-xE/discussion
     val options = opts.filter { _ != "rjs" }
 
     try {
       val parentPath = jsxCoffeeFile.getParentFile.getAbsolutePath
-      println("Now Compiling: " + jsxCoffeeFile.getAbsolutePath)
       val (jsOutput, dependencies) = runCompiler(
         Seq(cjsxCommand, "-p", "-b") ++ options ++ Seq(jsxCoffeeFile.getAbsolutePath)
       )
-      println(options)
-      println(jsOutput)
       (jsOutput, Some(""), dependencies.map { new File(_) } )
     } catch {
       case e: CoffeeReactCompilationException => {
@@ -34,7 +28,6 @@ object CoffeeReactCompiler {
   private val DependencyLine = """^/\* line \d+, (.*) \*/$""".r
 
   private def runCompiler(command: ProcessBuilder): (String, Seq[String]) = {
-    println("fuck off dude :) !!!")
     val err = new StringBuilder
     val out = new StringBuilder
 

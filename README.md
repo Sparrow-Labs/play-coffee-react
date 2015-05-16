@@ -44,3 +44,5 @@ lazy val assemblyPlugin = uri("https://github.com/Sparrow-Labs/play-coffee-react
 ```bash
 $ sbt reload
 ```
+
+## License
